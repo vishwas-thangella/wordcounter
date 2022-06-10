@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+</head>
+
+<body>
+    <header>
+        <img src="./word.png" alt="logo" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h3>Word Counter</h3>
+    </header>
+    <div class="container">
+        <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+    </div>
+    <footer>
+        <p> <span id="words"> 0 </span> Words and <span id="chars"> 0 </span> characters</p>
+    </footer>
+</body>
+
+</html>
+<style>
+    body {
+        background-color: rgba(0, 0, 0, 0.518);
+    }
+    
+    * {
+        margin: 0px;
+    }
+    
+    header {
+        background-color: rgba(11, 157, 225);
+        height: 70px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        margin: auto;
+    }
+    
+    header h3 {
+        font-size: 25px;
+    }
+    
+    .container {
+        height: 400px;
+        width: 100vw;
+        margin: auto;
+        border: 1px solid black;
+    }
+    
+    footer {
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(11, 157, 225);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        font-size: 25px;
+    }
+    
+    #textarea {
+        font-size: 15px;
+        width: 99.5%;
+        height: 100%;
+        text-align: start;
+    }
+    
+    #chars,
+    #words {
+        color: black;
+        font-weight: 900;
+    }
+</style>
+
+<script>
+    let textarea = document.getElementById("textarea");
+
+    textarea.addEventListener('input', function() {
+        var text = textarea.value;
+        document.getElementById("chars").innerHTML = text.length;
+        var words = text.split(" ");
+        text = text.trim();
+        let clean = words.filter(function(elm) {
+            return elm != "";
+        });
+        document.getElementById("words").innerHTML = clean.length;
+    })
+</script>
